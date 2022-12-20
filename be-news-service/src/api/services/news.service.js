@@ -22,7 +22,7 @@ class NewsService {
 
   async insertSeedProvider() {
     const providerBuffer = fs.readFileSync(
-      `${__dirname}/../../../news-provider/fake-news.provider.json`
+      `${__dirname}/../../../news-fake-provider/fake-news.provider.json`
     );
 
     const allProviderNews = JSON.parse(providerBuffer);
