@@ -63,8 +63,11 @@ module.exports.deleteNew = async (req, res) => {
   const { errors } = validationResult(req);
   if (errors.length > 0) return res.status(400).json(errors);
   try {
-    await NewsService.instance().deleteNew(req.params.id);
-    res.status(204);
+    const newServiceDelete = await NewsService.instance().deleteNew(
+      req.params.id
+    );
+
+    res.status(204).json();
   } catch (error) {
     res.status(500).json(error.message);
   }
