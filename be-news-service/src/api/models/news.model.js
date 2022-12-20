@@ -6,11 +6,11 @@ const NewsSchema = new Schema(
     description: { type: String, require: true },
     content: { type: String, require: true },
     author: { type: String, require: true },
+    archiveDate: { type: Date, default: null },
   },
   {
     timestamps: {
       createdAt: "date",
-      updatedAt: "archiveDate",
     },
   }
 );
