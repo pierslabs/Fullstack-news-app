@@ -1,0 +1,9 @@
+.card {
+ width: 40vw;
+ background: rgb(255,255,255,0.9);
+}
+
+@media (max-width: 900px) {
+  .card{
+    width: 90vw;
+  }}

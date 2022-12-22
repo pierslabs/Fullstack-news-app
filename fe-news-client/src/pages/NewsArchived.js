@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { Suspense, useEffect, useState } from 'react'
 import ListItem from '../components/list-item/ListItem';
-import { Toaster } from 'react-hot-toast';
 import DotLoader from "react-spinners/DotLoader";
+import { Toaster } from 'react-hot-toast';
 
-
-const Home = () => {
+const NewsArchived = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+
   const locationSpliter = window.location.href.split('/');
   const isLocationArchived = locationSpliter.includes('news-archived');
-
 
   const getData = () => {
     try {
@@ -19,7 +19,7 @@ const Home = () => {
         .then(res => res.json())
         .then(data => {
           setNews(
-            data.filter(item => item.archiveDate === null)
+            data.filter(item => item.archiveDate !== null)
           )
         })
       setInterval(() => {
@@ -27,28 +27,8 @@ const Home = () => {
       }, 1000)
     } catch (error) {
       setError(error)
-      console.log(error)
     }
-  }
-
-  const runSeed = async () => {
-    try {
-      setLoading(true)
-      fetch(`${process.env.REACT_APP_DB_URL}/news/seed`)
-        .then(res => res.json())
-        .then(data => {
-          getData()
-          setNews(
-            data.filter(item => item.archiveDate === null)
-          )
-        })
-      setInterval(() => {
-        setLoading(false)
-      }, 1000)
-    } catch (error) {
-      setError(error)
-      console.log(error)
-    }
+    console.log(error)
   }
 
   useEffect(() => {
@@ -57,10 +37,7 @@ const Home = () => {
 
   return (
     <div className="conatiner" >
-      <div className="title d-flex justify-content-around text-light p-3">
-        <h1>AllFunds News</h1>
-        {news.length <= 0 ? <button className='btn btn-primary' onClick={runSeed}>Run News seed</button> : null}
-      </div>
+
       {
         loading ?
           <div className="loader-container">
@@ -75,12 +52,13 @@ const Home = () => {
           </div>
           :
           news.map(item => (
-            <ListItem data={item} key={item._id} getData={getData} setLoading={setLoading} locationArchived={isLocationArchived} />
+            <ListItem key={item._id} data={item} getData={getData} setLoading={setLoading} locationArchived={isLocationArchived} />
           ))
       }
       <Toaster />
-    </div>
+      {news <= 0 ? <h1 className='text-center text-light mt-5'>You have no archived news.</h1> : null}
+    </div >
   )
 }
 
-export default Home
+export default NewsArchived;

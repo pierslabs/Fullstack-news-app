@@ -1,0 +1,7 @@
+.archivedICon :hover {
+  transform: translateY(1px);
+}
+
+.deletedIcon :hover {
+  transform: translateY(1px);
+}

@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/allfunds.png';
+
 const Header = () => {
   return (
     <nav id='navbar' className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -10,14 +11,16 @@ const Header = () => {
           <img className='App-logo' src={logo} width={40} />
         </NavLink>
         <ul className='navbar-nav'>
-          <li className='nav-item'>
-            <NavLink to='/create' className='nav-link'>News</NavLink>
+          <li className='nav-item mx-2'>
+            <NavLink to='/' className='nav-link'>News</NavLink>
           </li>
           <li>
-            <NavLink to='/archived' className='nav-link'>Archived</NavLink>
+            <NavLink to='/news-archived' className='nav-link mx-2'>Archived</NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink to='/create' className='nav-link mx-2'>Create new</NavLink>
           </li>
         </ul>
-
       </div>
     </nav>
   )
