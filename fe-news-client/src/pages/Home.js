@@ -59,7 +59,7 @@ const Home = () => {
     <div className="conatiner" >
       <div className="title d-flex justify-content-around text-light p-3">
         <h1>All Funds News</h1>
-        {news.length <= 0 ? <button className='btn btn-primary' onClick={runSeed}>Run News seed</button> : null}
+        {news.length <= 0 ? <button className='btn btn-primary' onClick={runSeed}>Run News Seed</button> : null}
       </div>
       {
         loading ?
