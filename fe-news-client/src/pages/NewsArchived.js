@@ -37,7 +37,9 @@ const NewsArchived = () => {
 
   return (
     <div className="conatiner" >
-
+      <div className="title d-flex justify-content-around text-light p-3">
+        <h1>Your News Archived</h1>
+      </div>
       {
         loading ?
           <div className="loader-container">

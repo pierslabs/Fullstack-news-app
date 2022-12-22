@@ -11,7 +11,7 @@ const Home = () => {
 
   const locationSpliter = window.location.href.split('/');
   const isLocationArchived = locationSpliter.includes('news-archived');
-
+  console.log(process.env.REACT_APP_DB_URL)
 
   const getData = () => {
     try {
@@ -58,7 +58,7 @@ const Home = () => {
   return (
     <div className="conatiner" >
       <div className="title d-flex justify-content-around text-light p-3">
-        <h1>AllFunds News</h1>
+        <h1>All Funds News</h1>
         {news.length <= 0 ? <button className='btn btn-primary' onClick={runSeed}>Run News seed</button> : null}
       </div>
       {
